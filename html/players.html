@@ -1,0 +1,24 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      
+      <form novalidate="true" class="form-inline">
+
+        <div class="form-group">
+          <label for="name">Nom : </label>
+          <input type="text" name="name" ng-model="playerCtrl.newPlayer.name" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+          <label for="pseudo">Pseudo : </label>
+          <input type="text" name="pseudo" ng-model="playerCtrl.newPlayer.pseudo" class="form-control"/>
+        </div>
+
+        <input class="btn btn-default" type="submit" ng-click="playerCtrl.addNewPlayer()" value="Add"/>
+
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<table class="shows-tab">
+  <tr>
+    <td class="td-show">
+
+    </td>
+    <td ng-repeat="show in kjk.shows" class="td-show">
+      {{ show.name }}
+    </td>
+  </tr>
+  <tr>
+    <td class="td-show">
+
+    </td>
+    <td ng-repeat="show in kjk.shows" class="td-show">
+      <span>{{ kjk.formatDate(show) }}</span>
+    </td>
+  </tr>
+  <tr ng-repeat="player in kjk.players" class="player">
+    <td>
+      {{player.$value + " (" + player.$id + ")" }}
+    </td>
+    <td ng-repeat="show in kjk.shows" class="presence" ng-class="{yes: show.players[player.$id]}">
+      <input type="checkbox" ng-model="show.players[player.$id]" ng-change="kjk.updatePlayerOnShow(player,show);"/>
+    </td>
+  </tr>
+</table>
