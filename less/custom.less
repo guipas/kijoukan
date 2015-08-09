@@ -10,42 +10,112 @@
 
 //make some changes to bootstrap variables here !
 //here are a few examples :
-//@brand-primary:         #FF8700;
+@brand-primary:         #555;
 @font-family-sans-serif:  ubuntu, sans-serif;
 //@link-hover-decoration: none;
 
+@kjk-left-border-width : 20px;
+
+body {
+}
+
+header#main-header {
+  padding : 20px;
+  padding-bottom : 40px;
+  padding-top : 40px;
+  border-left : @kjk-left-border-width solid #bbb;
+}
+
+nav {
+  //padding-left: 20px;
+  border-left : @kjk-left-border-width solid #ccc;
+
+  .nav-pills {
+    > li {
+      float: left;
+
+      // Links rendered as pills
+      > a {
+        border-radius: 0;
+      }
+      + li {
+        margin-left: 0px;
+      }
+
+      // Active state
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @nav-pills-active-link-hover-color;
+          background-color: @nav-pills-active-link-hover-bg;
+        }
+      }
+    }
+    > li:first-child {
+      padding-left:20px;
+      //background: #bbb;
+    }
+  }
+
+
+}
+
 
 #main {
-  margin-top : 50px;
-  padding : 10px;
-  border: 1px dashed #ddd;
+  padding-left : 20px;
+  padding-top : 40px;
+  padding-bottom : 40px;
+  border-left : @kjk-left-border-width solid #aaa;
 }
 
-td.td-show {
-  text-align: center;
-  padding: 5px;
-  border-right: 1px solid #ddd;
+.home-kjk {
+
+  border: 1px dashed #bbb;
+
+  td.td-show {
+    text-align: center;
+    padding: 5px;
+    border-right: 1px dashed #ccc;
+
+    span.date {
+      font-family: @font-family-monospace;
+      font-size: @font-size-small;
+      display: block;
+    }
+
+    span.date:first-child {
+      border-top : 1px dashed #bbb;
+      padding-top : 10px;
+    }
+
+    span.show-name {
+      font-size: @font-size-large;
+      display: block;
+      text-transform: capitalize;
+    }
+  }
+
+  td.presence {
+    width : 130px;
+    text-align: center;
+    background: #fbb;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-bottom: 3px solid white;
+  }
+
+  tr.player td:first-child {
+    border-top: 1px solid #ddd;
+    padding: 5px;
+  }
+
+  td.yes {
+    background: #bfb;
+  }
 }
 
 
-
-td.presence {
-  width : 100px;
-  text-align: center;
-  background: #fbb;
-  padding: 5px;
-  border: 1px solid #fff;
-  border-bottom: 3px solid white;
-}
-
-tr.player td:first-child {
-  border-top: 1px solid #ddd;
-  padding: 5px;
-}
-
-td.yes {
-  background: #bfb;
-}
 
 #form-add-date {
   position: relative;

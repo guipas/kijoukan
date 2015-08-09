@@ -8,14 +8,24 @@
 
   function ShowsController($firebaseObject,$firebaseArray,$scope,ShowsFactory,$log,fbRef){
 
-    //var ref = new Firebase("https://vivid-torch-4635.firebaseio.com/teams/lutinsgivres");
+    vm = this;
 
-    this.newShow = {};
-    this.alerts = [];
-    this.updateCalendarsOpen = [];
-    this.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
+    vm.newShow = {};
+    vm.alerts = [];
+    vm.updateCalendarsOpen = [];
+    vm.mainCalendarOpened = false;
+    vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
 
-    this.test = function(obj) {
+    vm.updateShow = updateShow;
+    vm.deleteShow = deleteShow;
+    vm.addNewShow = addNewShow;
+    vm.closeAlert = closeAlert;
+    vm.openUpdateCalendar = openUpdateCalendar;
+    vm.openCalendar = openCalendar;
+    vm.test = test;
+
+
+    function test(obj) {
       $log.log(obj);
     }
 
@@ -25,12 +35,19 @@
     *
     *
     */
-    this.updateShow = function(show){
-      var newDate = this.shows.getDateObjects()[show.$id];
+    function updateShow(show) {
+      var newDate = vm.shows.getDateObjects()[show.$id];
       var newTimestamp = newDate.getTime();
-      $log.log("Add : " + newTimestamp);
       show.date = newTimestamp;
-      this.shows.$save(show);
+
+      vm.shows.$save(show)
+        .then( function(data) {
+          vm.alerts.push({type:"success",msg:"Evenement mis à jour avec succès"});
+        }) 
+        .catch(function(error) {
+        var message = "Problème lors de la mise a jour de l'evenement : '" + error + "'";
+        vm.alerts.push({type: "danger", msg: message});
+      });
     } 
 
 
@@ -39,39 +56,53 @@
     *
     *
     */
-    this.deleteShow = function(show){
-      this.shows.$remove(show);
+    function deleteShow(show) {
+      vm.shows.$remove(show)
+        .then(function(data) {
+          vm.alerts.push({type:"",msg:"Evenement supprimé succès"});
+        })
+        .catch(function(error) {
+          var message = "Problème lors de la suppression de l'evenement : '" + error + "'";
+          vm.alerts.push({type: "danger", msg: message});
+        });
+      
     }
 
     /**
     *
     *
     */
-    this.addNewShow = function(){
+    function addNewShow() {
 
       //transform date object into timestamp to save into database
-      this.newShow.date = this.newShow.date.getTime();
-      this.shows.$add(this.newShow);
-      this.newShow = {};
-
+      vm.newShow.date = vm.newShow.date.getTime();
+      vm.shows.$add(vm.newShow)
+        .then(function(data) {
+          vm.alerts.push({type:"success",msg:"Evenement ajouté avec succès"});
+          vm.newShow = {};
+        })
+        .catch(function(error) {
+           var message = "Problème lors de l'ajout de l'evenement : '" + error + "'";
+          vm.alerts.push({type: "danger", msg: message});
+        });
     };
 
-    this.closeAlert = function(index) {
-      this.alerts.splice(index, 1);
+    function closeAlert(index) {
+      vm.alerts.splice(index, 1);
     };
 
-    this.dateOptions = {
+    vm.dateOptions = {
       formatYear: 'yy',
       startingDay: 1
     };
 
-    this.open = function($event) {
-      this.opened = true;
+    function openCalendar($event) {
+      vm.mainCalendarOpened = true;
     };
 
-    this.openUpdateCalendar = function(id){
+    function openUpdateCalendar(id) {
       //$log.log("open calendar ! ");
-      this.updateCalendarsOpen[id] = true;
+      vm.updateCalendarsOpen[id] = true;
     }
   }
 

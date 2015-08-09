@@ -25,23 +25,25 @@
     <script src="./js/controllers/signin.controller.js" charset="utf-8"></script>
     <script src="./js/controllers/menu.controller.js" charset="utf-8"></script>
 
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    
     <link rel="stylesheet" href="./css/custom.css" media="screen" title="no title" charset="utf-8">
 
   </head>
-  <body class="container">
+  <body class="page">
 
-    <header>
+    <header id="main-header">
+    <img src="img/logo1.png">
     </header>
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <ul class="nav nav-pills" ng-controller="MenuController as menuCtrl">
-          <li role="presentation" ng-class="{active : menuCtrl.isActive('/')}"><a href="#/">Kijoukan ?</a></li>
-          <li role="presentation" ng-class="{active : menuCtrl.isActive('/players')}"><a href="#/players">Ajouter un joueur</a></li>
-          <li role="presentation" ng-class="{active : menuCtrl.isActive('/shows')}"><a href="#/shows">Ajouter une date</a></li>
-        </ul>
-
+        <nav class="">
+          <ul class="nav nav-pills" ng-controller="MenuController as menuCtrl">
+            <li role="presentation" ng-class="{active : menuCtrl.isActive('/')}"><a href="#/">Kijoukan ?</a></li>
+            <li role="presentation" ng-class="{active : menuCtrl.isActive('/players')}"><a href="#/players">Ajouter un joueur</a></li>
+            <li role="presentation" ng-class="{active : menuCtrl.isActive('/shows')}"><a href="#/shows">Ajouter une date</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
 

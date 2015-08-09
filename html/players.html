@@ -1,8 +1,13 @@
 
 <div class="container-fluid">
   <div class="row">
+  <div class="col-md-12">
+      <alert ng-repeat="alert in playerCtrl.alerts" type="{{alert.type}}" close="playerCtrl.closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+  <div class="col-md-12">
+    <h3>Ajouter un joueur</h3>    
+  </div>
     <div class="col-md-12">
-      
       <form novalidate="true" class="form-inline">
 
         <div class="form-group">
@@ -15,10 +20,30 @@
           <input type="text" name="pseudo" ng-model="playerCtrl.newPlayer.pseudo" class="form-control"/>
         </div>
 
-        <input class="btn btn-default" type="submit" ng-click="playerCtrl.addNewPlayer()" value="Add"/>
-
+        <input class="btn btn-default" type="submit" ng-click="playerCtrl.addNewPlayer()" value="Ajouter"/>
       </form>
-
+      <hr/>
+    </div>
+    <div class="col-md-12">
+      <h3>Modifier les joueurs</h3>      
+    </div>
+    <div class="col-md-12" ng-repeat="player in playerCtrl.players">
+      <form name="updatePlayerForm{{$index}}" novalidate="true" class="form-inline" >
+        <div class="form-group">
+          <label for="name">Nom : </label>
+          <input type="text" name="name" ng-model="player.$value" class="form-control"/>
+        </div>
+         <div class="form-group">
+          <label for="pseudo">Pseudo : </label>
+          <input type="text" name="pseudo" ng-model="player.$id" class="form-control" ng-disabled="true"/>
+        </div>
+        <!-- {{ playerCtrl.log(this['updatePlayerForm'+$index]) }} -->
+        <div class="form-group">
+          <button ng-disabled="this['updatePlayerForm'+$index].name.$pristine" class="btn btn-default" ng-click="playerCtrl.updatePlayer(player);this['updatePlayerForm'+$index].$setPristine();" >Modifier</button>
+          <button popover-template="'html/players.delete_button.html'" popover-title="" class="btn btn-default" popover-placement="right">Supprimer</button>
+        </div>
+        <hr/>
+      </form>
     </div>
   </div>
 </div>

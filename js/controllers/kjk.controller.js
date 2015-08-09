@@ -6,20 +6,51 @@
 
   KJKController.$inject = ['$scope','$firebaseArray','$firebaseObject','currentAuth','fbRef','ShowsFactory'];
 
+
   function KJKController($scope,$firebaseArray,$firebaseObject,currentAuth,fbRef,ShowsFactory){
 
+    var vm = this;
+
    
-    this.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
-    this.players = $firebaseArray(fbRef.child('players'));
+    vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
+    vm.players = $firebaseArray(fbRef.child('players'));
+
+    vm.displayDate = displayDate;
+    vm.updatePlayerOnShow = updatePlayerOnShow;
+    vm.displayDay = displayDay;
+    vm.displayMonth = displayMonth;
+    vm.displayYear = displayYear;
 
 
-    this.formatDate = function(show){
-      var date = this.shows.getDateObject(show.$id);
-      return moment(date).format("L");
+    function displayDate(show) {
+      var date = vm.shows.getDateObject(show.$id);
+      return moment(date).format("dddd Do MMMM YYYY");
+    };
+
+    function displayDay(show) {
+      return _getShowMoment(show).format("dddd Do");
+    };
+
+    function displayMonth(show) {
+      return _getShowMoment(show).format("MMMM");
+    };
+
+    function displayYear(show) {
+      return _getShowMoment(show).format("YYYY");
+    };
+
+    function _getShowDate(show) {
+      return vm.shows.getDateObject(show.$id);
+    };
+
+    function _getShowMoment(show) {
+      return moment(_getShowDate(show));
     };
 
 
-    this.updatePlayerOnShow = function(player,show) {
+
+
+    function updatePlayerOnShow(player,show) {
 
       var childPath = "shows/" + show.$id + "/players/" + player.$id + "";
       var fbPlayers = $firebaseObject(fbRef.child(childPath));
