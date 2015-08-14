@@ -24,6 +24,7 @@
       </td>
       <td ng-repeat="show in kjk.shows" class="presence" ng-class="{yes: show.players[player.$id]}">
         <input type="checkbox" ng-model="show.players[player.$id]" ng-change="kjk.updatePlayerOnShow(player,show);"/>
+        <input class="role" type="text" dng-show='show.players[player.$id] && show.roles[player.$id]' ng-model="show.roles[player.$id]"/>
       </td>
     </tr>
   </table>

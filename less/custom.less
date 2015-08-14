@@ -96,18 +96,33 @@ nav {
     }
   }
 
+
+  tr.player td:first-child {
+    border-top: 1px solid #ddd;
+    padding: 5px;
+  }
+
+  /*
+  tr.player td.presence >input {
+    display: none;
+  }
+
+  tr.player:hover td.presence >input {
+    display: block;
+  }
+  */
+
   td.presence {
-    width : 130px;
-    text-align: center;
+    width : 150px;
+    text-align: left;
     background: #fbb;
     padding: 5px;
     border: 1px solid #fff;
     border-bottom: 3px solid white;
   }
 
-  tr.player td:first-child {
-    border-top: 1px solid #ddd;
-    padding: 5px;
+  td.presence > input.role {
+    width : 100px;
   }
 
   td.yes {

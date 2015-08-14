@@ -4,10 +4,10 @@
     .module('kijoukan')
     .controller('KJKController', KJKController);
 
-  KJKController.$inject = ['$scope','$firebaseArray','$firebaseObject','currentAuth','fbRef','ShowsFactory'];
+  KJKController.$inject = ['$scope','$firebaseArray','$firebaseObject','currentAuth','fbRef','ShowsFactory','$log'];
 
 
-  function KJKController($scope,$firebaseArray,$firebaseObject,currentAuth,fbRef,ShowsFactory){
+  function KJKController($scope,$firebaseArray,$firebaseObject,currentAuth,fbRef,ShowsFactory,$log){
 
     var vm = this;
 
@@ -48,10 +48,9 @@
     };
 
 
-
-
     function updatePlayerOnShow(player,show) {
 
+      
       var childPath = "shows/" + show.$id + "/players/" + player.$id + "";
       var fbPlayers = $firebaseObject(fbRef.child(childPath));
 
@@ -61,8 +60,11 @@
         else fbPlayers.$value = true;
         fbPlayers.$save();
       });
-    };
-  }
+    
+    
+    //$log.log(show);
+  };
+}
 
 
 })();
