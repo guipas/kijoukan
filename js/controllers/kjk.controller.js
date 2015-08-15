@@ -20,6 +20,10 @@
     vm.displayDay = displayDay;
     vm.displayMonth = displayMonth;
     vm.displayYear = displayYear;
+    vm.updateRoleForPlayer = updateRoleForPlayer;
+    vm.log = log;
+
+    vm.openedPopover = {};
 
 
     function displayDate(show) {
@@ -46,6 +50,14 @@
     function _getShowMoment(show) {
       return moment(_getShowDate(show));
     };
+
+    function updateRoleForPlayer(player,show) {
+      $log.log(vm.shows[show.$id].roles);
+      vm.shows.$save(show);
+      //vm.shows.$save(show.$id);
+    }
+
+    function log(obj){$log.log(obj);}
 
 
     function updatePlayerOnShow(player,show) {

@@ -1,0 +1,8 @@
+<form novalidate class="form-inline role-edit">
+	<div class="form-group">
+		<label for="role">Role : </label>
+		<input name="role" class="form-control" type="text" ng-show='show.players[player.$id]' ng-model="show.roles[player.$id]" size="5"/>
+		<button class="btn btn-default" ng-click="kjk.updateRoleForPlayer(player,show);" popover-close>OK</button>
+	</div>
+</form>
+
