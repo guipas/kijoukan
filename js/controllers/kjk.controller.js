@@ -4,14 +4,13 @@
     .module('kijoukan')
     .controller('KJKController', KJKController);
 
-  KJKController.$inject = ['$scope','$firebaseArray','$firebaseObject','currentAuth','fbRef','ShowsFactory','$log'];
+  KJKController.$inject = ['$scope','$firebaseArray','$firebaseObject','currentAuth','fbRef','ShowsFactory','$log','$translate'];
 
 
-  function KJKController($scope,$firebaseArray,$firebaseObject,currentAuth,fbRef,ShowsFactory,$log){
+  function KJKController($scope,$firebaseArray,$firebaseObject,currentAuth,fbRef,ShowsFactory,$log,$translate){
 
     var vm = this;
 
-   
     vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
     vm.players = $firebaseArray(fbRef.child('players'));
 
@@ -21,10 +20,8 @@
     vm.displayMonth = displayMonth;
     vm.displayYear = displayYear;
     vm.updateRoleForPlayer = updateRoleForPlayer;
-    vm.log = log;
 
-    vm.openedPopover = {};
-
+    
 
     function displayDate(show) {
       var date = vm.shows.getDateObject(show.$id);
@@ -52,17 +49,12 @@
     };
 
     function updateRoleForPlayer(player,show) {
-      $log.log(vm.shows[show.$id].roles);
+      //$log.log(vm.shows[show.$id].roles);
       vm.shows.$save(show);
-      //vm.shows.$save(show.$id);
-    }
-
-    function log(obj){$log.log(obj);}
-
+    };
 
     function updatePlayerOnShow(player,show) {
 
-      
       var childPath = "shows/" + show.$id + "/players/" + player.$id + "";
       var fbPlayers = $firebaseObject(fbRef.child(childPath));
 
@@ -72,10 +64,7 @@
         else fbPlayers.$value = true;
         fbPlayers.$save();
       });
-    
-    
-    //$log.log(show);
-  };
+    };
 }
 
 

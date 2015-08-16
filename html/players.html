@@ -5,18 +5,18 @@
       <alert ng-repeat="alert in playerCtrl.alerts" type="{{alert.type}}" close="playerCtrl.closeAlert($index)">{{alert.msg}}</alert>
     </div>
   <div class="col-md-12">
-    <h3>Ajouter un joueur</h3>    
+    <h3>{{'ADD_PLAYER' | translate }}</h3>    
   </div>
     <div class="col-md-12">
       <form novalidate="true" class="form-inline">
 
         <div class="form-group">
-          <label for="name">Nom : </label>
+          <label for="name">{{'NAME' | translate }}</label>
           <input type="text" name="name" ng-model="playerCtrl.newPlayer.name" class="form-control"/>
         </div>
 
         <div class="form-group">
-          <label for="pseudo">Pseudo : </label>
+          <label for="pseudo">{{'PSEUDO' | translate }}</label>
           <input type="text" name="pseudo" ng-model="playerCtrl.newPlayer.pseudo" class="form-control"/>
         </div>
 
@@ -25,22 +25,22 @@
       <hr/>
     </div>
     <div class="col-md-12">
-      <h3>Modifier les joueurs</h3>      
+      <h3>{{'MODIFY_PLAYERS' | translate }}</h3>      
     </div>
     <div class="col-md-12" ng-repeat="player in playerCtrl.players">
       <form name="updatePlayerForm{{$index}}" novalidate="true" class="form-inline" >
         <div class="form-group">
-          <label for="name">Nom : </label>
+          <label for="name">{{'NAME' | translate }}</label>
           <input type="text" name="name" ng-model="player.$value" class="form-control"/>
         </div>
          <div class="form-group">
-          <label for="pseudo">Pseudo : </label>
+          <label for="pseudo">{{'PSEUDO' | translate }}</label>
           <input type="text" name="pseudo" ng-model="player.$id" class="form-control" ng-disabled="true"/>
         </div>
         <!-- {{ playerCtrl.log(this['updatePlayerForm'+$index]) }} -->
         <div class="form-group">
-          <button ng-disabled="this['updatePlayerForm'+$index].name.$pristine" class="btn btn-default" ng-click="playerCtrl.updatePlayer(player);this['updatePlayerForm'+$index].$setPristine();" >Modifier</button>
-          <button popover-template="'html/players.delete_button.html'" popover-title="" class="btn btn-default" popover-placement="right">Supprimer</button>
+          <button ng-disabled="this['updatePlayerForm'+$index].name.$pristine" class="btn btn-default" ng-click="playerCtrl.updatePlayer(player);this['updatePlayerForm'+$index].$setPristine();" >{{'MODIFY' | translate }}</button>
+          <button popover-template="'html/players.delete_button.html'" popover-title="" class="btn btn-default" popover-placement="right">{{'DELETE' | translate }}</button>
         </div>
         <hr/>
       </form>

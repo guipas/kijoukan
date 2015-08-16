@@ -1,7 +1,7 @@
 (function(){
 
 angular
-  .module('kijoukan', ['firebase','ngRoute','ui.bootstrap'])
+  .module('kijoukan', ['firebase','ngRoute','ui.bootstrap','pascalprecht.translate']);
 
 
 })();

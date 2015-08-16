@@ -5,6 +5,7 @@
     <title>KIJOUKAN ?</title>
 
     <script src="./bower_components/angularjs/angular.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-translate/angular-translate.js"></script>
     <script src="./bower_components/angular-route/angular-route.js" charset="utf-8"></script>
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js" charset="utf-8"></script>
     <script src="https://code.angularjs.org/1.2.5/i18n/angular-locale_fr-fr.js"></script>
@@ -15,7 +16,9 @@
 
 
     <script src="./js/app.js" charset="utf-8"></script>
+    <script src="./js/translation.config.js" charset="utf-8"></script>
     <script src="./js/route-config.js" charset="utf-8"></script>
+    <script src="./js/firebase.url.value.js" charset="utf-8"></script>
     <script src="./js/factories/auth.factory.js" charset="utf-8"></script>
     <script src="./js/factories/shows.factory.js" charset="utf-8"></script>
     <script src="./js/services/fbref.service.js" charset="utf-8"></script>
@@ -41,8 +44,8 @@
         <nav class="">
           <ul class="nav nav-pills" ng-controller="MenuController as menuCtrl">
             <li role="presentation" ng-class="{active : menuCtrl.isActive('/')}"><a href="#/">Kijoukan ?</a></li>
-            <li role="presentation" ng-class="{active : menuCtrl.isActive('/players')}"><a href="#/players">Ajouter un joueur</a></li>
-            <li role="presentation" ng-class="{active : menuCtrl.isActive('/shows')}"><a href="#/shows">Ajouter une date</a></li>
+            <li role="presentation" ng-class="{active : menuCtrl.isActive('/players')}"><a href="#/players">{{ 'MENU_ADD_PLAYER' | translate }}</a></li>
+            <li role="presentation" ng-class="{active : menuCtrl.isActive('/shows')}"><a href="#/shows">{{ 'MENU_ADD_SHOW' | translate }}</a></li>
           </ul>
         </nav>
       </div>

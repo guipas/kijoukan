@@ -5,14 +5,14 @@
       <alert ng-repeat="alert in showCtrl.alerts" type="{{alert.type}}" close="showCtrl.closeAlert($index)">{{alert.msg}}</alert>
     </div>
     <div class="col-md-12">
-      <h3>Ajouter un evenement</h3>
+      <h3>{{'ADD_SHOW' | translate }}</h3>
       <form name="showForm" id="form-add-date" novalidate="" class="form-inline">
         <div class="form-group">
-          <label for="name">Nom de l'evennement : </label>
+          <label for="name">{{'SHOW_NAME' | translate }}</label>
           <input class="form-control" type="text" name="name" ng-model="showCtrl.newShow.name" ng-minlength="2" ng-required="true"/>
         </div>
         <div class="form-group">
-          <label for="date">Date : </label>
+          <label for="date">{{'SHOW_DATE' | translate }}</label>
           <div class="input-group">
             <input name="date" type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="showCtrl.newShow.date" is-open="showCtrl.mainCalendarOpened" datepicker-options="showCtrl.dateOptions" ng-required="true" close-text="Close" size="5" />
             <span class="input-group-btn">
@@ -27,16 +27,16 @@
       <hr/>
     </div>
     <div class="col-md-12">
-      <h3>Modifier les evenement</h3>
+      <h3>{{'MODIFY_SHOW' | translate }}</h3>
     </div>
     <div class="col-md-12 show-date" ng-repeat="show in showCtrl.shows">
       <form name="updateShowForm{{$index}}" class="form-inline" novalidate="true">
         <div class="form-group">
-          <label for="name">Nom de l'evennement : </label>
+          <label for="name">{{'SHOW_NAME' | translate }}</label>
           <input class="form-control" type="text" name="name" ng-model="show.name" ng-minlength="2" ng-required="true"/>
         </div>
         <div class="form-group">
-          <label for="date">Date : </label>
+          <label for="date">{{'SHOW_DATE' | translate }}</label>
           <div class="input-group">
             <input name="date" type="text" class="form-control" ng-model="showCtrl.shows.getDateObjects()[show.$id]" datepicker-popup="dd/MM/yyyy" datepicker-options="showCtrl.dateOptions" ng-required="true" is-open="showCtrl.updateCalendarsOpen[$index]" close-text="Close" size="5" />
             <span class="input-group-btn">
@@ -46,8 +46,8 @@
         </div>
         <div class="form-group">
          <!-- {{ showCtrl.test(this['updateShowForm'+$index]) }} -->
-          <input ng-disabled="this['updateShowForm'+$index].$invalid || this['updateShowForm'+$index].$pristine" type="submit" ng-click="showCtrl.updateShow(show);this['updateShowForm'+$index].$setPristine();" value="Modifier" class="btn btn-default"/> 
-          <button popover-template="'html/shows.delete_button.html'" popover-title="" class="btn btn-default" popover-placement="right">Supprimer</button>
+          <input ng-disabled="this['updateShowForm'+$index].$invalid || this['updateShowForm'+$index].$pristine" type="submit" ng-click="showCtrl.updateShow(show);this['updateShowForm'+$index].$setPristine();" value="{{'MODIFY' | translate }}" class="btn btn-default"/> 
+          <button popover-template="'html/shows.delete_button.html'" popover-title="" class="btn btn-default" popover-placement="right">{{'DELETE' | translate }}</button>
         </div>
       </form>
       <hr/>

@@ -27,7 +27,7 @@
           <input class="available" type="checkbox" ng-model="show.players[player.$id]" ng-change="kjk.updatePlayerOnShow(player,show);"/>
           <!-- <input class="role" type="text" ng-show='show.players[player.$id]' ng-model="show.roles[player.$id]" ng-mouseleave="kjk.updateRoleForPlayer();"/> -->
           <span class="role-text">{{ show.roles[player.$id] }}</span>
-          <button class="btn btn-default role" ng-show='show.players[player.$id]' popover-title="Joueur disponible, attribuer un role : " popover-placement="right" popover-template="'html/home.role_edit_button.html'" popover-elem><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+          <button class="btn btn-default role" ng-show='show.players[player.$id]' popover-title="{{'ENTER_ROLE' | translate }}" popover-placement="right" popover-template="'html/home.role_edit_button.html'" popover-elem><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
       </div>
       </td>
     </tr>
