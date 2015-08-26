@@ -4,9 +4,9 @@
     .module('kijoukan')
     .controller('ShowsController', ShowsController);
 
-  ShowsController.$inject = ['$firebaseObject','$firebaseArray','$scope','ShowsFactory','$log','fbRef'];
+  ShowsController.$inject = ['$firebaseObject','$firebaseArray','$scope','ShowsFactory','$log','fbRef','fbKijoukan'];
 
-  function ShowsController($firebaseObject,$firebaseArray,$scope,ShowsFactory,$log,fbRef){
+  function ShowsController($firebaseObject,$firebaseArray,$scope,ShowsFactory,$log,fbRef,fbKijoukan){
 
     vm = this;
 
@@ -14,7 +14,8 @@
     vm.alerts = [];
     vm.updateCalendarsOpen = [];
     vm.mainCalendarOpened = false;
-    vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
+    //vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
+    vm.shows = fbKijoukan.getShowsArray('lutinsgivres');
 
     vm.updateShow = updateShow;
     vm.deleteShow = deleteShow;

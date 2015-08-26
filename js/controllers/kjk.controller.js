@@ -4,15 +4,18 @@
     .module('kijoukan')
     .controller('KJKController', KJKController);
 
-  KJKController.$inject = ['$scope','$firebaseArray','$firebaseObject','currentAuth','fbRef','ShowsFactory','$log','$translate'];
+  KJKController.$inject = ['$routeParams','$firebaseArray','$firebaseObject','currentAuth','fbRef','ShowsFactory','$log','$translate','fbKijoukan'];
 
 
-  function KJKController($scope,$firebaseArray,$firebaseObject,currentAuth,fbRef,ShowsFactory,$log,$translate){
+  function KJKController($routeParams,$firebaseArray,$firebaseObject,currentAuth,fbRef,ShowsFactory,$log,$translate,fbKijoukan){
 
     var vm = this;
 
-    vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
-    vm.players = $firebaseArray(fbRef.child('players'));
+    //vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
+    vm.shows = fbKijoukan.getShowsArray($routeParams.id);
+    //vm.players = $firebaseArray(fbRef.child('players'));
+    vm.players = fbKijoukan.getPlayersArray($routeParams.id);
+    //vm.kjkId = $routeParams.id;
 
     vm.displayDate = displayDate;
     vm.updatePlayerOnShow = updatePlayerOnShow;
@@ -55,6 +58,7 @@
 
     function updatePlayerOnShow(player,show) {
 
+      /*
       var childPath = "shows/" + show.$id + "/players/" + player.$id + "";
       var fbPlayers = $firebaseObject(fbRef.child(childPath));
 
@@ -64,6 +68,10 @@
         else fbPlayers.$value = true;
         fbPlayers.$save();
       });
+      */
+      vm.shows.$save(show);
+
+
     };
 }
 

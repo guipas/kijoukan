@@ -4,14 +4,15 @@
     .module('kijoukan')
     .controller('PlayersController', PlayersController);
 
-  PlayersController.$inject = ['$firebaseObject','$firebaseArray','fbRef','$log'];
+  PlayersController.$inject = ['$routeParams','$firebaseObject','$firebaseArray','fbRef','$log','fbKijoukan'];
 
-  function PlayersController($firebaseObject,$firebaseArray,fbRef,$log) {
+  function PlayersController($routeParams,$firebaseObject,$firebaseArray,fbRef,$log,fbKijoukan) {
 
     var vm = this;
 
     vm.newPlayer = {};
-    vm.players = $firebaseArray(fbRef.child('players/'));
+    //vm.players = $firebaseArray(fbRef.child('players/'));
+    vm.players = fbKijoukan.getPlayersArray($routeParams.id);
     vm.alerts = [];
 
     vm.addNewPlayer = addNewPlayer;

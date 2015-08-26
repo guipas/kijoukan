@@ -8,7 +8,7 @@
     $routeProvider
 
       // route for the home page
-      .when('/', {
+      .when('/kijoukan/:id', {
           templateUrl : 'html/home.html',
           controller  : 'KJKController',
           controllerAs : 'kjk',
@@ -30,7 +30,7 @@
       })
 
       //add a player
-      .when('/players', {
+      .when('/kijoukan/:id/players', {
           templateUrl : 'html/players.html',
           controller  : 'PlayersController',
           controllerAs : 'playerCtrl'
