@@ -37,7 +37,7 @@
       })
 
       //add a show
-      .when('/shows', {
+      .when('/kijoukan/:id/shows', {
           templateUrl : 'html/shows.html',
           controller  : 'ShowsController',
           controllerAs : 'showCtrl'

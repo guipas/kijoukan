@@ -4,9 +4,9 @@
     .module('kijoukan')
     .controller('ShowsController', ShowsController);
 
-  ShowsController.$inject = ['$firebaseObject','$firebaseArray','$scope','ShowsFactory','$log','fbRef','fbKijoukan'];
+  ShowsController.$inject = ['$firebaseObject','$firebaseArray','$scope','ShowsFactory','$log','fbRef','fbKijoukan','$translate','$routeParams'];
 
-  function ShowsController($firebaseObject,$firebaseArray,$scope,ShowsFactory,$log,fbRef,fbKijoukan){
+  function ShowsController($firebaseObject,$firebaseArray,$scope,ShowsFactory,$log,fbRef,fbKijoukan,$translate,$routeParams){
 
     vm = this;
 
@@ -15,7 +15,7 @@
     vm.updateCalendarsOpen = [];
     vm.mainCalendarOpened = false;
     //vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
-    vm.shows = fbKijoukan.getShowsArray('lutinsgivres');
+    vm.shows = fbKijoukan.getShowsArray($routeParams.id);
 
     vm.updateShow = updateShow;
     vm.deleteShow = deleteShow;
@@ -43,11 +43,13 @@
 
       vm.shows.$save(show)
         .then( function(data) {
-          vm.alerts.push({type:"success",msg:"Evenement mis à jour avec succès"});
+           $translate('UPDATE_SUCCESS').then(function(message){
+            vm.alerts.push({type:"success",msg:"Evenement mis à jour avec succès"});
+           }); 
         }) 
         .catch(function(error) {
-        var message = "Problème lors de la mise a jour de l'evenement : '" + error + "'";
-        vm.alerts.push({type: "danger", msg: message});
+          var message = "Problème lors de la mise a jour de l'evenement : '" + error + "'";
+          vm.alerts.push({type: "danger", msg: message});
       });
     } 
 

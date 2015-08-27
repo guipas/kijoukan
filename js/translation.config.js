@@ -33,6 +33,10 @@
       'SHOW_DATE' : "Date :",
       'MODIFY_SHOW' : "Modify an event",   
 
+      //showsController
+      'UPDATE_SUCCESS' : "Event updated successfuly",
+      'UPDATE_FAIL' : "A problem occured during event update attempt",
+
     });
 
  
@@ -62,6 +66,10 @@
       'SHOW_NAME' : "Nom de l'evenement :",
       'SHOW_DATE' : "Date :",
       'MODIFY_SHOW' : "Modifier un evenement",
+
+      //showsController
+      'UPDATE_SUCCESS' : "Evenement mis à jour avec succès",
+      'UPDATE_FAIL' : "Probleme lors de la mise a jour de l'evenement",
 
     });
 
