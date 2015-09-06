@@ -1,8 +1,8 @@
 (function () {
 
   angular
-    .module('kijoukan')
-    .controller('ShowsController', ShowsController);
+  .module('kijoukan')
+  .controller('ShowsController', ShowsController);
 
   ShowsController.$inject = ['$firebaseObject','$firebaseArray','$scope','ShowsFactory','$log','fbRef','fbKijoukan','$translate','$routeParams'];
 
@@ -42,14 +42,14 @@
       show.date = newTimestamp;
 
       vm.shows.$save(show)
-        .then( function(data) {
-           $translate('UPDATE_SUCCESS').then(function(message){
-            vm.alerts.push({type:"success",msg:"Evenement mis à jour avec succès"});
-           }); 
-        }) 
-        .catch(function(error) {
-          var message = "Problème lors de la mise a jour de l'evenement : '" + error + "'";
-          vm.alerts.push({type: "danger", msg: message});
+      .then( function(data) {
+       $translate('UPDATE_SUCCESS').then(function(message){
+        vm.alerts.push({type:"success",msg:"Evenement mis à jour avec succès"});
+      }); 
+     }) 
+      .catch(function(error) {
+        var message = "Problème lors de la mise a jour de l'evenement : '" + error + "'";
+        vm.alerts.push({type: "danger", msg: message});
       });
     } 
 
@@ -61,13 +61,13 @@
     */
     function deleteShow(show) {
       vm.shows.$remove(show)
-        .then(function(data) {
-          vm.alerts.push({type:"",msg:"Evenement supprimé succès"});
-        })
-        .catch(function(error) {
-          var message = "Problème lors de la suppression de l'evenement : '" + error + "'";
-          vm.alerts.push({type: "danger", msg: message});
-        });
+      .then(function(data) {
+        vm.alerts.push({type:"",msg:"Evenement supprimé succès"});
+      })
+      .catch(function(error) {
+        var message = "Problème lors de la suppression de l'evenement : '" + error + "'";
+        vm.alerts.push({type: "danger", msg: message});
+      });
       
     }
 
@@ -80,14 +80,14 @@
       //transform date object into timestamp to save into database
       vm.newShow.date = vm.newShow.date.getTime();
       vm.shows.$add(vm.newShow)
-        .then(function(data) {
-          vm.alerts.push({type:"success",msg:"Evenement ajouté avec succès"});
-          vm.newShow = {};
-        })
-        .catch(function(error) {
-           var message = "Problème lors de l'ajout de l'evenement : '" + error + "'";
-          vm.alerts.push({type: "danger", msg: message});
-        });
+      .then(function(data) {
+        vm.alerts.push({type:"success",msg:"Evenement ajouté avec succès"});
+        vm.newShow = {};
+      })
+      .catch(function(error) {
+       var message = "Problème lors de l'ajout de l'evenement : '" + error + "'";
+       vm.alerts.push({type: "danger", msg: message});
+     });
     };
 
     function closeAlert(index) {

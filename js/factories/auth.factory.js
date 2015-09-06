@@ -4,10 +4,10 @@
     .module('kijoukan')
     .factory('Auth', Auth);
 
-  Auth.$inject = ['$firebaseAuth'];
+  Auth.$inject = ['$firebaseAuth','fbURL'];
 
-  function Auth($firebaseAuth){
-    var ref = new Firebase("https://vivid-torch-4635.firebaseio.com");
+  function Auth($firebaseAuth,fbURL){
+    var ref = new Firebase(fbURL);
     return $firebaseAuth(ref);
   }
 

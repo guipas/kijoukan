@@ -17,7 +17,7 @@
 
     <script src="./js/app.js" charset="utf-8"></script>
     <script src="./js/translation.config.js" charset="utf-8"></script>
-    <script src="./js/route-config.js" charset="utf-8"></script>
+    <script src="./js/route.config.js" charset="utf-8"></script>
     <script src="./js/firebase.url.value.js" charset="utf-8"></script>
     <script src="./js/factories/auth.factory.js" charset="utf-8"></script>
     <script src="./js/factories/shows.factory.js" charset="utf-8"></script>
@@ -25,10 +25,12 @@
     <script src="./js/services/fbkijoukan.service.js" charset="utf-8"></script>
     <script src="./js/controllers/kjk.controller.js" charset="utf-8"></script>
     <script src="./js/controllers/shows.controller.js" charset="utf-8"></script>
+    <script src="./js/controllers/home.controller.js" charset="utf-8"></script>
     <script src="./js/controllers/players.controller.js" charset="utf-8"></script>
     <script src="./js/controllers/signin.controller.js" charset="utf-8"></script>
-    <script src="./js/controllers/menu.controller.js" charset="utf-8"></script>
-    <script src="./js/directives/popoverclose.directive.js" charset="utf-8"></script>
+    <!-- <script src="./js/controllers/menu.controller.js" charset="utf-8"></script> -->
+    <script src="./js/directives/kjkMenu.directive.js" charset="utf-8"></script>
+    <script src="./js/directives/popoverClose.directive.js" charset="utf-8"></script>
 
     
     <link rel="stylesheet" href="./css/custom.css" media="screen" title="no title" charset="utf-8">
@@ -42,13 +44,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <nav class="">
-          <ul class="nav nav-pills" ng-controller="MenuController as menuCtrl">
-            <li role="presentation" ng-class="{active : menuCtrl.isActive('/')}"><a href="#/">Kijoukan ?</a></li>
-            <li role="presentation" ng-class="{active : menuCtrl.isActive('/players')}"><a href="#/players">{{ 'MENU_ADD_PLAYER' | translate }}</a></li>
-            <li role="presentation" ng-class="{active : menuCtrl.isActive('/shows')}"><a href="#/shows">{{ 'MENU_ADD_SHOW' | translate }}</a></li>
-          </ul>
-        </nav>
+        
       </div>
     </div>
 

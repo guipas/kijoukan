@@ -7,9 +7,18 @@
   function config($routeProvider) {
     $routeProvider
 
-      // route for the home page
-      .when('/kijoukan/:id', {
+      // sign in
+      .when('/', {
           templateUrl : 'html/home.html',
+          controller  : 'HomeController',
+          controllerAs : 'homeCtrl'
+      })
+
+
+
+      // kijoukan planning for this team
+      .when('/kijoukan/:id', {
+          templateUrl : 'html/kijoukan.html',
           controller  : 'KJKController',
           controllerAs : 'kjk',
           resolve: {

@@ -7,9 +7,14 @@
   function translation($translateProvider) {
 
     $translateProvider.translations('en', {
-      //index.html
-      'MENU_ADD_PLAYER' : 'Ajouter un joueur',
-      'MENU_ADD_SHOW' : 'Ajouter un evenement',
+
+      //home
+      'HOME_LOGIN' : 'Login',
+      'HOME_PASSWORD' : 'Password',
+
+      //menu.html
+      'MENU_ADD_PLAYER' : 'Add a player',
+      'MENU_ADD_SHOW' : 'Add en event',
 
       //home.html
       'ENTER_ROLE': 'Player available, set a role : ',
@@ -41,7 +46,12 @@
 
  
     $translateProvider.translations('fr', {
-      //index.html
+
+      //home
+      'HOME_LOGIN' : 'Login',
+      'HOME_PASSWORD' : 'Mot de passe',
+
+      //menu.html
       'MENU_ADD_PLAYER' : 'Ajouter un joueur',
       'MENU_ADD_SHOW' : 'Ajouter un evenement',
 
