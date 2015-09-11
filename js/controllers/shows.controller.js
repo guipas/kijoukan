@@ -44,7 +44,7 @@
       vm.shows.$save(show)
       .then( function(data) {
        $translate('UPDATE_SUCCESS').then(function(message){
-        vm.alerts.push({type:"success",msg:"Evenement mis à jour avec succès"});
+        vm.alerts.push({type:"success",msg:message});
       }); 
      }) 
       .catch(function(error) {

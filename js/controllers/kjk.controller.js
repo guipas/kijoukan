@@ -23,6 +23,7 @@
     vm.displayMonth = displayMonth;
     vm.displayYear = displayYear;
     vm.updateRoleForPlayer = updateRoleForPlayer;
+    vm.starPlayerOnShow = starPlayerOnShow;
 
     
 
@@ -73,6 +74,18 @@
 
 
     };
+
+    function starPlayerOnShow(player,show){
+      
+      if(!show.stars) show.stars = {};
+
+      if(show.stars[player.$id]){
+        show.stars[player.$id] = false;
+      }
+      else show.stars[player.$id] = true;
+
+      vm.shows.$save(show);
+    }
 }
 
 

@@ -27,9 +27,9 @@
 	}
 
 
-	MenuController.$inject = ['$location','$routeParams'];
+	MenuController.$inject = ['$location','$routeParams','Auth','$log'];
 
-	function MenuController($location,$routeParams){
+	function MenuController($location,$routeParams,Auth,$log){
 
 		var vm = this;
 
@@ -38,6 +38,7 @@
 		vm.isActive = isActive;
 		vm.getFullPath = getFullPath;
 		vm.idExists = idExists;
+		vm.logOut = logOut;
 
 
 
@@ -56,6 +57,12 @@
 			if(vm.idExists())
 				return "#/kijoukan/" + vm.id + path;
 			else return "";
+		}
+
+		function logOut(){
+			Auth.$unauth();
+			$log.log("Logging out");
+			//$location.path("/");
 		}
 	}
 

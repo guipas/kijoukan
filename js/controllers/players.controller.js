@@ -21,7 +21,8 @@
     vm.closeAlert = closeAlert;
 
     function addNewPlayer() {
-      var player = $firebaseObject(fbRef.child('players/'+vm.newPlayer.pseudo));
+      //var player = $firebaseObject(fbRef.child('/players/'+vm.newPlayer.pseudo));
+      var player = $firebaseObject(vm.players.$ref().child(vm.newPlayer.pseudo));
       player.$loaded(function(obj){
         $log.log(obj);
         if (obj.$value)
@@ -32,6 +33,8 @@
           vm.newPlayer = {};
           }
       });
+      
+
     };
 
     function updatePlayer(player) {

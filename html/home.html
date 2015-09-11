@@ -1,8 +1,13 @@
-<div>
-	<form novalidate class="">
-		<div class="form-group">
-			<label for="login">{{ 'HOME_LOGIN' | translate }}</label><input ng-model="homeCtrl.credentials.email" class="form-control" type="text" name="login" />
-			<label for="password">{{ 'HOME_PASSWORD' | translate }}</label><input ng-model="homeCtrl.credentials.password" class="form-control" type="password" name="password" />
-		</div>
-	</form>
+<div class="row">
+	<div class="col-md-4">
+		<form novalidate class="">
+			<div class="form-group">
+				<label for="login">{{ 'HOME_LOGIN' | translate }}</label><input ng-model="homeCtrl.credentials.email" class="form-control" type="text" name="login" />
+				<label for="password">{{ 'HOME_PASSWORD' | translate }}</label><input ng-model="homeCtrl.credentials.password" class="form-control" type="password" name="password" />
+			</div>
+			<div class="form-group">
+				<input class="btn btn-default" type="submit" value="{{ 'HOME_SUBMIT' | translate }}" ng-click="homeCtrl.logIn();"/>			
+			</div>
+		</form>
+	</div>
 </div>

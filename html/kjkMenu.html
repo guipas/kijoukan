@@ -1,7 +1,8 @@
 <nav class="">
 	<ul class="nav nav-pills">
-		<li role="presentation" ng-class="{active : vm.isActive('/')}"><a href="{{ vm.getFullPath('/')}}">Kijoukan ? : {{ vm.id }}</a></li>
+		<li role="presentation" ng-class="{active : vm.isActive('/')}"><a href="{{ vm.getFullPath('/')}}">Kijoukan</a></li>
 		<li role="presentation" ng-class="{active : vm.isActive('/players')}"><a href="#/kijoukan/{{ vm.id }}/players">{{ 'MENU_ADD_PLAYER' | translate }}</a></li>
 		<li role="presentation" ng-class="{active : vm.isActive('/shows')}"><a href="#/kijoukan/{{ vm.id }}/shows">{{ 'MENU_ADD_SHOW' | translate }}</a></li>
+		<li role="presentation"><a ng-click="vm.logOut()">Logout</a></li>
 	</ul>
 </nav>

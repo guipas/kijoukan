@@ -2,7 +2,8 @@
 
   angular
     .module('kijoukan')
-    .config(config);
+    .config(config)
+    .run(routeWatch);
 
   function config($routeProvider) {
     $routeProvider
@@ -38,6 +39,13 @@
           controllerAs : 'signinCtrl'
       })
 
+      // sign in
+      .when('/signout', {
+          //templateUrl : 'html/signin.html',
+          controller  : 'SignOutController',
+          controllerAs : 'signinCtrl'
+      })
+
       //add a player
       .when('/kijoukan/:id/players', {
           templateUrl : 'html/players.html',
@@ -51,6 +59,39 @@
           controller  : 'ShowsController',
           controllerAs : 'showCtrl'
       })
+  }
+
+  function routeWatch($rootScope,$location,Auth,fbKijoukan) {
+
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      //console.log("current : " + current);
+      //console.log("next : " + next.templateUrl);
+      var auth = Auth.$getAuth();
+      if(next.templateUrl == 'html/home.html' && auth != null) {
+        //$location.path( "/" );
+        //console.log("Home and logged in ! ");
+        
+        var team = fbKijoukan.getTeamObjectFromAuthId(auth.uid);
+        team.$loaded().then(function(){
+          $location.path('/kijoukan/'+team.$value);
+        });
+
+      }
+    });
+
+    Auth.$onAuth(function(authData) {
+      if (authData) {
+        console.log("logged in as:", authData.uid);
+        var team = fbKijoukan.getTeamObjectFromAuthId(authData.uid);
+        team.$loaded().then(function(){
+          $location.path('/kijoukan/'+team.$value);
+        });
+      } else {
+        console.log("Logged out");
+        $location.path('/');
+      }
+    });
+
   }
 
 })();
