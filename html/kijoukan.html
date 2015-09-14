@@ -22,7 +22,7 @@
       </td>
     </tr>
     <tr ng-repeat="player in kjk.players" class="player">
-      <td>
+      <td class="name">
         {{ player.$value }}
       </td>
       <td ng-repeat="show in kjk.shows" class="presence" ng-class="{yes: show.players[player.$id]}">

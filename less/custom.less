@@ -21,15 +21,16 @@ body {
 
 header#main-header {
   padding : 20px;
-  padding-bottom : 40px;
-  padding-top : 40px;
+  padding-bottom : 10px;
+  padding-top : 10px;
   border-left : @kjk-left-border-width solid #bbb;
 }
 
 nav {
   //padding-left: 20px;
   border-left : @kjk-left-border-width solid #ccc;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  font-size: @font-size-small;
 
   .nav-pills {
     > li {
@@ -65,8 +66,8 @@ nav {
 
 #main {
   padding-left : 20px;
-  padding-top : 40px;
-  padding-bottom : 40px;
+  padding-top : 0px;
+  padding-bottom : 0px;
   border-left : @kjk-left-border-width solid #aaa;
 }
 
@@ -78,20 +79,21 @@ nav {
     text-align: center;
     padding: 5px;
     border-right: 1px dashed #ccc;
+    border-bottom:  1px dashed #ddd;
 
     span.date {
       font-family: @font-family-monospace;
       font-size: @font-size-small;
-      display: block;
+      display: inline-block;
     }
 
     span.date:first-child {
-      border-top : 1px dashed #bbb;
+      //border-top : 1px dashed #bbb;
       padding-top : 10px;
     }
 
     span.show-name {
-      font-size: @font-size-large;
+      //font-size: @font-size-normal;
       display: block;
       text-transform: capitalize;
     }
@@ -101,6 +103,10 @@ nav {
   tr.player td:first-child {
     border-top: 1px solid #ddd;
     padding: 5px;
+  }
+
+  tr.player td.name {
+    text-align: center;
   }
 
   tr.player td.presence .presence-inner {
@@ -152,7 +158,7 @@ nav {
   }
 
   td.presence {
-    width : 150px;
+    width : 200px;
     height : 50px;
     text-align: center;
     background: #fbb;
