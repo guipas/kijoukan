@@ -14,8 +14,12 @@
       'HOME_SUBMIT' : 'Log in',
         
       'HOME_AVAILABLE_TOOLTIP' : 'Are you available for this event ?',
-        'HOME_STAR_TOOLTIP' : 'Do you ABSOLUTELY want to participate to this show because it\'s your biggest dream ?',
-        'HOME_EDIT_TOOLTIP' : 'Don\'t press this button if you\'re not the coach',
+      'HOME_STAR_TOOLTIP' : 'Do you ABSOLUTELY want to participate to this show because it\'s your biggest dream ?',
+      'HOME_EDIT_TOOLTIP' : 'Don\'t press this button if you\'re not the coach',
+
+      'KJK_AVAILABLE_YES' : "Yes",
+      'KJK_AVAILABLE_NO' : "No",
+      'KJK_AVAILABLE_MAYBE' : "Maybe",
 
 
       //menu.html
@@ -61,6 +65,11 @@
       'HOME_AVAILABLE_TOOLTIP' : 'Es-tu disponible pour ce spectacle ?',
         'HOME_STAR_TOOLTIP' : 'Veux-tu ABSOLUMENT participer à ce spectacle parceque c\'est ton rêve le plus fou ?',
         'HOME_EDIT_TOOLTIP' : 'Pas touche a ce bouton si tu n\'es pas le coach',
+
+
+      'KJK_AVAILABLE_YES' : "Oui",
+      'KJK_AVAILABLE_NO' : "Non",
+      'KJK_AVAILABLE_MAYBE' : "Pas répondu",
 
 
       //menu.html

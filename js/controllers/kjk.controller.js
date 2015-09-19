@@ -17,6 +17,13 @@
     vm.players = fbKijoukan.getPlayersArray($routeParams.id);
     //vm.kjkId = $routeParams.id;
 
+
+    vm.availabilities = {// all possible availability states
+      yes : true,
+      no : false,
+      maybe : "maybe"//"i dont know... can you repeat the questioooon
+    };
+
     vm.displayDate = displayDate;
     vm.updatePlayerOnShow = updatePlayerOnShow;
     vm.displayDay = displayDay;
@@ -24,6 +31,11 @@
     vm.displayYear = displayYear;
     vm.updateRoleForPlayer = updateRoleForPlayer;
     vm.starPlayerOnShow = starPlayerOnShow;
+    vm.test = test;
+
+    function test(v){
+      $log.log(v);
+    }
 
     
 
