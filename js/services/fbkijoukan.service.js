@@ -23,7 +23,7 @@
 
     function getPlayersArray(teamId) {
     	var teamRef = fbRef.child("teams/"+teamId);
-    	return $firebaseArray(teamRef.child('players'));
+    	return $firebaseArray(teamRef.child('players').orderByValue());
     }
 
     function getTeamObjectFromAuthId(authId) {

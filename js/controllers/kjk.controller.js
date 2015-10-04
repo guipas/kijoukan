@@ -31,10 +31,10 @@
     vm.displayYear = displayYear;
     vm.updateRoleForPlayer = updateRoleForPlayer;
     vm.starPlayerOnShow = starPlayerOnShow;
-    vm.test = test;
+    vm.getCounter = getCounter;
 
-    function test(v){
-      $log.log(v);
+    vm.test = function(test){
+      $log.log(test);
     }
 
     
@@ -67,6 +67,28 @@
     function updateRoleForPlayer(player,show) {
       //$log.log(vm.shows[show.$id].roles);
       vm.shows.$save(show);
+    };
+
+    function getCounter(player) {
+      //$log.log(playerId);return;
+      //if(player.$id!=="joseph") return;
+      var yes = no = maybe = played = 0;
+      vm.shows.forEach(function(show,i,shows){
+        if(show.players[player.$id]===true) yes++;
+        else if(show.players[player.$id]===false) no++;
+        //else maybe++;
+        else no++;
+
+         if(show.players[player.$id]===true && show.roles[player.$id]) played++;
+          //$log.log(""+player.$id+" -> "+show.players[player.$id]);
+      });
+      //return yes + "/" + no + "/" + maybe;
+      return {
+        yes : yes,
+        no : no,
+        maybe : maybe,
+        played : played
+      }
     };
 
     function updatePlayerOnShow(player,show) {
