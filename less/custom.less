@@ -75,6 +75,23 @@ nav {
 
   border: 1px dashed #bbb;
   margin-bottom: 30px;
+  position: relative;
+
+  .names {
+  	position: absolute;
+  	padding-top: 130px;
+  	width: 74px;
+  	z-index: 1000;
+
+  }
+
+  .names .name {
+  	height: 50px;
+  	background: #fff;
+  	line-height: 50px;
+  	width: 100%;
+  	text-align: center;
+  }
 
   td.td-show {
     text-align: center;
@@ -107,6 +124,14 @@ nav {
   }
 
   tr.player td.name {
+    text-align: center;
+  }
+
+  tr.player td.name div.spaceholder {
+    text-align: center;
+  }
+
+  tr.player td.name span {
     text-align: center;
   }
 
@@ -173,7 +198,7 @@ nav {
 
   td.presence div.presence-inner {
     position: relative;
-    width: 100%;
+    width: 150px;
     height: 100%;
     //display: inline-block;
 

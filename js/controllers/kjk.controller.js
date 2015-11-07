@@ -11,12 +11,8 @@
 
     var vm = this;
 
-    //vm.shows = new ShowsFactory(fbRef.child('shows').orderByChild("date"));
     vm.shows = fbKijoukan.getShowsArray($routeParams.id);
-    //vm.players = $firebaseArray(fbRef.child('players'));
     vm.players = fbKijoukan.getPlayersArray($routeParams.id);
-    //vm.kjkId = $routeParams.id;
-
 
     vm.availabilities = {// all possible availability states
       yes : true,
@@ -33,11 +29,13 @@
     vm.starPlayerOnShow = starPlayerOnShow;
     vm.getCounter = getCounter;
 
-    vm.test = function(test){
-      $log.log(test);
-    }
+    /* jQuery effects */
+    $(window).scroll(function(){
+      $('.names').css({
+          'left': $(this).scrollLeft()
+      });
+    });
 
-    
 
     function displayDate(show) {
       var date = vm.shows.getDateObject(show.$id);

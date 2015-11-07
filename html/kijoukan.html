@@ -2,6 +2,9 @@
 
 
 <div class="home-kjk">
+<div class="names">
+  <div ng-repeat="player in kjk.players" class="name">{{ player.$value }}</div>
+</div>
   <table class="shows-tab">
     <tr>
       <td class="td-show">
@@ -32,7 +35,7 @@
     <tr ng-repeat="player in kjk.players" class="player">
 
       <td class="name">
-        {{ player.$value }}
+        <span>{{ player.$value }}</span>
         
       </td>
       <td ng-repeat="show in kjk.shows" class="presence" ng-class="{yes: (show.players[player.$id]===true),no: (show.players[player.$id]===false)}">
