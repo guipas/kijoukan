@@ -72,13 +72,15 @@
       //if(player.$id!=="joseph") return;
       var yes = no = maybe = played = 0;
       vm.shows.forEach(function(show,i,shows){
-        if(show.players && show.players[player.$id]===true) yes++;
-        else if(show.players && show.players[player.$id]===false) no++;
-        //else maybe++;
-        else no++;
+      	if(_getShowDate(show).getTime() < Date.now()) {
+			if(show.players && show.players[player.$id]===true) yes++;
+			else if(show.players && show.players[player.$id]===false) no++;
+			else no++;
 
-        if(show.roles && show.players && show.players[player.$id]===true && show.roles[player.$id]) played++;
-          //$log.log(""+player.$id+" -> "+show.players[player.$id]);
+			if(show.roles && show.players && show.players[player.$id]===true && show.roles[player.$id]) played++;
+			//$log.log(""+player.$id+" -> "+show.players[player.$id]);
+      	}
+        
       });
       //return yes + "/" + no + "/" + maybe;
       return {
