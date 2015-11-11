@@ -28,6 +28,7 @@
     vm.updateRoleForPlayer = updateRoleForPlayer;
     vm.starPlayerOnShow = starPlayerOnShow;
     vm.getCounter = getCounter;
+    vm.datePassed = datePassed;
 
     /* jQuery effects */
     $(window).scroll(function(){
@@ -62,6 +63,11 @@
       return moment(_getShowDate(show));
     };
 
+    //has the show been played or is it a future show ?
+    function datePassed(show) {
+      return (_getShowDate(show).getTime() < Date.now());
+    }
+
     function updateRoleForPlayer(player,show) {
       //$log.log(vm.shows[show.$id].roles);
       vm.shows.$save(show);
@@ -72,17 +78,15 @@
       //if(player.$id!=="joseph") return;
       var yes = no = maybe = played = 0;
       vm.shows.forEach(function(show,i,shows){
-      	if(_getShowDate(show).getTime() < Date.now()) {
-			if(show.players && show.players[player.$id]===true) yes++;
-			else if(show.players && show.players[player.$id]===false) no++;
-			else no++;
+      	if(datePassed(show)) {// count only already played show
+			   if(show.players && show.players[player.$id]===true) yes++;
+			   else if(show.players && show.players[player.$id]===false) no++;
+			   else no++;
 
-			if(show.roles && show.players && show.players[player.$id]===true && show.roles[player.$id]) played++;
-			//$log.log(""+player.$id+" -> "+show.players[player.$id]);
+			   if(show.roles && show.players && show.players[player.$id]===true && show.roles[player.$id]) played++;
+			   //$log.log(""+player.$id+" -> "+show.players[player.$id]);
       	}
-        
       });
-      //return yes + "/" + no + "/" + maybe;
       return {
         yes : yes,
         no : no,
