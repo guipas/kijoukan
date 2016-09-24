@@ -22,18 +22,24 @@
 
     function addNewPlayer() {
       //var player = $firebaseObject(fbRef.child('/players/'+vm.newPlayer.pseudo));
-      var player = $firebaseObject(vm.players.$ref().child(vm.newPlayer.pseudo));
-      player.$loaded(function(obj){
-        $log.log(obj);
-        if (obj.$value)
-          vm.alerts.push({type : "danger", msg : "Un joueur avec ce pseudo existe deja"});
-        else {
-          player.$value = vm.newPlayer.name;
-          player.$save();
-          vm.newPlayer = {};
-          }
-      });
-      
+      // var player = $firebaseObject(vm.players.$ref().child(vm.newPlayer.pseudo));
+      // player.$loaded(function(obj){
+      //   $log.log(obj);
+      //   if (obj.$value)
+      //     vm.alerts.push({type : "danger", msg : "Un joueur avec ce pseudo existe deja"});
+      //   else {
+      //     player.$value = vm.newPlayer.name;
+      //     player.$save();
+      //     vm.newPlayer = {};
+      //     }
+      // });
+      // console.log(vm.players);
+      //vm.players.$add(vm.newPlayer.pseudo);
+      vm.players.$add(vm.newPlayer.name);
+      vm.newPlayer = {};
+      //vm.players.$save();
+
+
 
     };
 
@@ -54,7 +60,7 @@
       $log.log(obj);
     }
 
-    
+
   }
 
 

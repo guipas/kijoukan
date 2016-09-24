@@ -40,15 +40,15 @@
 
     function displayDate(show) {
       var date = vm.shows.getDateObject(show.$id);
-      return moment(date).format("dddd Do MMMM YYYY");
+      return moment(date).format("dddd Do MM YYYY");
     };
 
     function displayDay(show) {
-      return _getShowMoment(show).format("dddd Do");
+      return _getShowMoment(show).format("ddd Do");
     };
 
     function displayMonth(show) {
-      return _getShowMoment(show).format("MMMM");
+      return _getShowMoment(show).format("MMM");
     };
 
     function displayYear(show) {
@@ -114,7 +114,7 @@
     };
 
     function starPlayerOnShow(player,show){
-      
+
       if(!show.stars) show.stars = {};
 
       if(show.stars[player.$id]){

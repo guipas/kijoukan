@@ -13,6 +13,7 @@
       <td ng-repeat="show in kjk.shows" class="td-show">
         <span class="show-name">{{ show.name }}</span>
       </td>
+      <td class="td-show"></td>
       <td class="td-show">Total <br/>disponible</td>
       <td class="td-show">Total <br/>pas disponible</td>
       <td class="td-show">Total <br/>joué</td>
@@ -30,13 +31,14 @@
       <td></td>
       <td></td>
       <td></td>
-      
+      <td></td>
+
     </tr>
     <tr ng-repeat="player in kjk.players" class="player">
 
       <td class="name">
         <span>{{ player.$value }}</span>
-        
+
       </td>
       <td ng-repeat="show in kjk.shows" class="presence" ng-class="{yes: (show.players[player.$id]===true),no: (show.players[player.$id]===false)}">
       <div class="presence-inner">
@@ -54,14 +56,24 @@
          </div>
       </div>
       </td>
-      <td class="total">  
+      <td class="name">
+        <span>{{ player.$value }}</span>
+
+      </td>
+      <td class="total">
+        <span>
           {{ kjk.getCounter(player).yes }}
+        </span>
       </td>
-      <td class="total">  
-          {{ kjk.getCounter(player).no }}
+      <td class="total">
+          <span>
+            {{ kjk.getCounter(player).no }}
+          </span>
       </td>
-      <td class="total">  
-          {{ kjk.getCounter(player).played }}
+      <td class="total">
+          <span>
+            {{ kjk.getCounter(player).played }}
+          </span>
       </td>
 
     </tr>
