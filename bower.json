@@ -16,12 +16,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular-bootstrap": "~0.13.2",
-    "angular-route": "~1.4.2",
-    "angularjs": "~1.4.2",
-    "jquery-ui": "~1.11.4",
-    "moment": "~2.10.5",
-    "bootstrap": "~3.3.5",
+    "angular-bootstrap": "0.13.2",
+    "angular-route": "1.4.2",
+    "angularjs": "1.4.2",
+    "jquery-ui": "1.11.4",
+    "moment": "2.10.5",
+    "bootstrap": "3.3.5",
     "angularfire": "1.1.2",
     "angular-translate": "2.7.2"
   }

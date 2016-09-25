@@ -15,8 +15,11 @@ angular
       var trigger = document.getElementsByClassName('trigger');
 
       function closeTrigger(i) {
-        $timeout(function(){ 
-          angular.element(trigger[0]).triggerHandler('click').removeClass('trigger'); 
+        $timeout(function(){
+          //angular.element(trigger[i]).triggerHandler('click');
+          $(trigger[i]).triggerHandler('click');
+          $(trigger[i]).removeClass('trigger');
+          //angular.element(trigger[0]).removeClass('trigger');
         });
       }
 
