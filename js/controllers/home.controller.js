@@ -11,8 +11,11 @@
   	var vm = this;
 
   	vm.credentials = {};
-
   	vm.logIn = logIn;
+    vm.createAccount = createAccount;
+    vm.creatingAccount = false;
+    vm.newCredentials = {};
+    vm.message = '';
 
 
 
@@ -25,8 +28,15 @@
           console.error("Authentication failed:", error);
         });
         vm.credentials = {};
-            
   	}
+
+    function createAccount(){
+      Auth.$createUser(vm.newCredentials)
+      .then(function () {
+        vm.message = 'Compte créé avec succès. Vous pouvez maintenant vous identifier';
+        vm.creatingAccount = false;
+      });
+    }
 
   }
 

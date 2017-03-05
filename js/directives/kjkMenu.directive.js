@@ -60,9 +60,12 @@
 		}
 
 		function logOut(){
-			Auth.$unauth();
-			$log.log("Logging out");
-			//$location.path("/");
+			Auth.$unauth()
+			.then(function () {
+				$log.log("Logging out");
+				$location.path("/");
+
+			});
 		}
 	}
 

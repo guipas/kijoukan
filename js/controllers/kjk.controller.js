@@ -17,7 +17,8 @@
     vm.availabilities = {// all possible availability states
       yes : true,
       no : false,
-      maybe : "maybe"//"i dont know... can you repeat the questioooon
+      maybe : "maybe",
+      prez : "prez",
     };
 
     vm.displayDate = displayDate;

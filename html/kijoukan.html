@@ -47,7 +47,7 @@
           <select ng-show="!kjk.datePassed(show)" class="available" ng-model="show.players[player.$id]" ng-change="kjk.updatePlayerOnShow(player,show);" tooltip="{{ 'HOME_AVAILABLE_TOOLTIP' | translate }}" convert-to-boolean-or-null>
             <option value="{{ kjk.availabilities.yes }}" ng-selected="show.players[player.$id]===kjk.availabilities.yes">{{ 'KJK_AVAILABLE_YES' | translate }}</option>
             <option value="{{ kjk.availabilities.no }}" ng-selected="show.players[player.$id]===kjk.availabilities.no">{{ 'KJK_AVAILABLE_NO' | translate }}</option>
-            <option value="{{ kjk.availabilities.maybe }}" ng-selected="show.players[player.$id]!==kjk.availabilities.yes && show.players[player.$id]!==kjk.availabilities.no">{{ 'KJK_AVAILABLE_MAYBE' | translate }}</option>
+            <option value="{{ kjk.availabilities.maybe }}" ng-selected="show.players[player.$id]!==kjk.availabilities.yes && show.players[player.$id]!==kjk.availabilities.no && show.players[player.$id]!==kjk.availabilities.prez">{{ 'KJK_AVAILABLE_MAYBE' | translate }}</option>
           </select>
 
           <span ng-show="show.players[player.$id] && !kjk.datePassed(show)" class="star glyphicon" ng-class="{'glyphicon-star' : (show.stars[player.$id] && show.players[player.$id]), 'glyphicon-star-empty' : (!show.stars[player.$id])}" ng-click="kjk.starPlayerOnShow(player,show);" tooltip="{{ 'HOME_STAR_TOOLTIP' | translate }}"></span>
